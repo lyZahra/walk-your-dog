@@ -35,14 +35,14 @@ luna.user = chris
 luna.photo.attach(io: luna_file, filename: "luna.png", content_type: "image/png")
 luna.save
 
-cooper_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
-cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
-cooper.user = safia
-cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
-cooper.save
+# cooper_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
+# cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
+# cooper.user = safia
+# cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
+# cooper.save
 
-daisy_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
-daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
-daisy.user = nurra
-daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
-daisy.save
+# daisy_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
+# daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
+# daisy.user = nurra
+# daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
+# daisy.save
