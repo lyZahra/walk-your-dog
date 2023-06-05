@@ -30,7 +30,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Following instructions to not share app_key for Cloudinary on Github
-gem "dotenv-rails", groups: [:development, :test]
+# gem "dotenv-rails", groups: [:development, :test]
+
+# Cloudinary gem for Rails
+gem "cloudinary"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
