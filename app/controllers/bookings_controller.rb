@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @pet = Pet.find(params[:pet_id])
-
   end
 
   def create
@@ -25,7 +24,6 @@ class BookingsController < ApplicationController
   end
 
   def update
-
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
@@ -36,7 +34,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-
     params.require(:booking).permit(:date, :pet_id, :user_id)
   end
 end
