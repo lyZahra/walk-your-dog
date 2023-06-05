@@ -1,7 +1,6 @@
 <h1><%= @pet.name %>'s Profile 🐾</h1>
 
 <img src="https://alpha.aeon.co/images/acd6897d-9849-4188-92c6-79dabcbcd518/header_essay-final-gettyimages-685469924.jpg" alt="dog image" width="500" height="333">
-<%= cl_image_tag @pet.photo.key, height: 333, width: 500, crop: :fill %>
 <h2>Location:</h2>
 <h2>Breed: <%= @pet.breed.capitalize %></h2>
 <h2>Owner: </h2>
