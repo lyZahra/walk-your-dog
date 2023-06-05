@@ -17,31 +17,31 @@ chris = User.create!(email: "guywholovesdogs@gmail.com", password: "secret", nam
 safia = User.create!(email: "example@gmail.com", password: "secret", name: "Safia")
 nurra = User.create!(email: "example.example@gmail.com", password: "secret", name: "Nurra")
 
-bella_file = URI.open("https://www.pexels.com/photo/chihuahua-sitting-on-staircase-3090875/")
+bella_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 bella = Pet.new(name: "Bella", availability: true, breed: "poodle", description: "cuddling and love chicken")
 bella.user = juliette
 bella.photo.attach(io: bella_file, filename: "bella.jpg", content_type: "image/jpg")
 bella.save
 
-max_file = URI.open("https://www.pexels.com/photo/adorable-animal-breed-canine-356378/")
+max_file = URI.open("https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
 max = Pet.new(name: "Max", availability: true, breed: "labrador", description: "super loyal, don't like to run")
 max.user = tom
 max.photo.attach(io: max_file, filename: "max.jpg", content_type: "image/jpg")
 max.save
 
-luna_file = URI.open("https://www.pexels.com/photo/person-holding-black-and-white-siberian-husky-3671300/")
+luna_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 luna = Pet.new(name: "Luna", availability: false, breed: "golden retriever", description: "yound and super athletic")
 luna.user = chris
 luna.photo.attach(io: luna_file, filename: "luna.jpg", content_type: "image/jpg")
 luna.save
 
-cooper_file = URI.open("https://www.pexels.com/photo/white-and-brown-short-coated-puppy-1805163/")
+cooper_file = URI.open("https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
 cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
 cooper.user = safia
 cooper.photo.attach(io: cooper_file, filename: "cooper.jpg", content_type: "image/jpg")
 cooper.save
 
-daisy_file = URI.open("https://www.pexels.com/photo/chihuahua-wearing-red-coat-costume-4588435/")
+daisy_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.jpg", content_type: "image/jpg")
