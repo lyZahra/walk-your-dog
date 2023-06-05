@@ -5,4 +5,4 @@
 <%= cl_image_tag @pet.photo.key, height: 333, width: 500, crop: :fill %>
 <h2>Location:</h2>
 <h2>Breed: <%= @pet.breed.capitalize %></h2>
-<h2>Owner: <%= @pet.user.email %></h2>
+<h2>Owner: <%= @pet.user.name %></h2>

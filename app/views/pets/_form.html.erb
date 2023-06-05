@@ -3,6 +3,7 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-1 shadow w-100">
         <%= simple_form_for @pet do |f| %>
+          <%= f.input :f.user.name %>
           <%= f.input :name %>
           <%= f.input :breed %>
           <%= f.input :description %>
