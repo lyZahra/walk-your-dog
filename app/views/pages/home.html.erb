@@ -2,16 +2,17 @@
 <p>Find me in app/views/pages/home.html.erb</p> %>
 
 <h1>Walk My Dog</h1>
-<%= link_to "Put my Pet", new_path %>
+<%= link_to "Put my Pet", new_pet_path %>
 <table>
 
   <tbody>
-    <% @pets.each do |pets| %>
+    <% @pets.each do |pet| %>
       <tr>
         <td><%= pet.name %></td>
-        <td><%= pet.image %></td>
+        <td><%= pet.breed %></td>
+        <td><%= pet.description %></td>
         <td><%= link_to "Book now", pet %></td>
-        <td><%= link_to "Cancel", booking, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+        <%# <td><%= link_to "Cancel", booking, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </tr>
     <% end %>
   </tbody>
