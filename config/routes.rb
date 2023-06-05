@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pets#home"
+  root to: "pages#home"
   resources :pets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
