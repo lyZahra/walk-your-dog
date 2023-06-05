@@ -30,7 +30,8 @@
           </div>
           <div class="col-lg-6">
               <div class="about-avatar">
-                <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
+                <%# <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon"> %>
+                <%= cl_image_tag @pet.photo.key, height: 333, width: 500, crop: :fill %>
               </div>
           </div>
       </div>
