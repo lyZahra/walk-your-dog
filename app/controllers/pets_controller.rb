@@ -21,7 +21,6 @@ class PetsController < ApplicationController
       redirect_to pet_path(@pet)
     else
       render :new, status: :unprocessable_entity
-      raise
     end
   end
 
