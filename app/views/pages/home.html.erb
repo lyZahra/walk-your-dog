@@ -2,20 +2,23 @@
 <p>Find me in app/views/pages/home.html.erb</p> %>
 
 <h1>Walk My Dog</h1>
-<tbody>
-  <% @pets.each do |pet| %>
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="..." alt="...">
-          <div class="caption">
-          <h3 ><%= pet.name %></h3>
-          <h2><%= pet.breed %></h2>
-          <p><%= pet.description %></p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-       </div>
+<%= link_to "Walk My Pet", new_pet_path %>
+<table>
+  <tbody>
+    <% @pets.each do |pet| %>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="..." alt="...">
+            <div class="caption">
+            <h3 ><%= pet.name %></h3>
+            <h2><%= pet.breed %></h2>
+            <p><%= pet.description %></p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+         </div>
+        </div>
       </div>
     </div>
-  </div>
-  <% end %>
-</tbody>
+    <% end %>
+  </tbody>
+</table>
