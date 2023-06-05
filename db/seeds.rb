@@ -17,23 +17,23 @@ chris = User.create!(email: "guywholovesdogs@gmail.com", password: "secret", nam
 safia = User.create!(email: "example@gmail.com", password: "secret", name: "Safia")
 nurra = User.create!(email: "example.example@gmail.com", password: "secret", name: "Nurra")
 
-bella_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
+bella_file = URI.open("https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
 bella = Pet.new(name: "Bella", availability: true, breed: "poodle", description: "cuddling and love chicken")
 bella.user = juliette
 bella.photo.attach(io: bella_file, filename: "bella.png", content_type: "image/png")
 bella.save
 
-max_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
+max_file = URI.open("https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
 max = Pet.new(name: "Max", availability: true, breed: "labrador", description: "super loyal, don't like to run")
 max.user = tom
 max.photo.attach(io: max_file, filename: "max.png", content_type: "image/png")
 max.save
 
-luna_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
-luna = Pet.new(name: "Luna", availability: false, breed: "golden retriever", description: "yound and super athletic")
-luna.user = chris
-luna.photo.attach(io: luna_file, filename: "luna.png", content_type: "image/png")
-luna.save
+# luna_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
+# luna = Pet.new(name: "Luna", availability: false, breed: "golden retriever", description: "yound and super athletic")
+# luna.user = chris
+# luna.photo.attach(io: luna_file, filename: "luna.png", content_type: "image/png")
+# luna.save
 
 # cooper_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 # cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
