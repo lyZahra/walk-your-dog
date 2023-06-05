@@ -23,7 +23,7 @@ bella.user = juliette
 bella.photo.attach(io: bella_file, filename: "bella.jpg", content_type: "image/jpg")
 bella.save
 
-max_file = URI.open("https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+max_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 max = Pet.new(name: "Max", availability: true, breed: "labrador", description: "super loyal, don't like to run")
 max.user = tom
 max.photo.attach(io: max_file, filename: "max.jpg", content_type: "image/jpg")
@@ -35,7 +35,7 @@ luna.user = chris
 luna.photo.attach(io: luna_file, filename: "luna.jpg", content_type: "image/jpg")
 luna.save
 
-cooper_file = URI.open("https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+cooper_file = URI.open("https://images.pexels.com/photos/4588435/pexels-photo-4588435.jpeg")
 cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
 cooper.user = safia
 cooper.photo.attach(io: cooper_file, filename: "cooper.jpg", content_type: "image/jpg")
