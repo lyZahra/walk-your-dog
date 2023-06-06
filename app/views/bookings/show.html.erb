@@ -1,4 +1,29 @@
 <h1>Booking Page - NEED TO UPDATE</h1>
 
-<%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
-<%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
+<%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
+<%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
+
+<p>
+  <%= @booking.booking_date %>
+</p>
+<p>
+  <%= @booking.status %>
+</p>
+<p>
+  <%= @booking.pet.name %>
+</p>
+<p>
+  <%= @booking.owner.name %>
+</p>
+<p>
+  <%= @booking.user.name %>
+</p>
+<p>
+  <%= @booking.user.email %>
+</p>
+<p>
+  <%= @booking.pet.photo %>
+</p>
+<p>
+  <%= @booking.pet.description %>
+</p>
