@@ -9,7 +9,7 @@ class BookingPolicy < ApplicationPolicy
     end
 
     def new?
-      create?
+      true
     end
 
     def create?
