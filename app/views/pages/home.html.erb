@@ -1,27 +1,20 @@
 <%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> %>
-<<<<<<< HEAD
-<h1>Walk My Dog</h1>
-<tbody>
-  <% @pets.each do |pet| %>
-    <div class="row display-flex space-between">
-      <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Pomeranian.JPG" alt="cute dog">
-          <p>
-          <h3 ><%= pet.name %></h3>
-=======
 <div class="container">
   <div class="wrapper">
    <% @pets.each do |pet| %>
     <div class="col-sm">
-      <div class="card my-2"  style="width: 18rem;">
-        <img class="card-img-" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Pomeranian.JPG" alt="cute dog">
+      <div class="card my-2"  style="width: 20rem;">
+        <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
+              <% if pet.photo.key.present? %>
+                  <%= cl_image_tag pet.photo.key, height: 300 , crop: :fill %>
+                <% else  %>
+                  <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
+                <% end %>
         <div>
           <h3 ><%= link_to pet.name,  pet_path(pet)  %></h3>
         </div>
         <div>
->>>>>>> 45bca73811ad7e9ed4968eea168837e3fd9b7f89
           <h2><%= pet.breed %></h2>
         </div>
         <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
@@ -31,9 +24,4 @@
       </div>
     <% end %>
   </div>
-<<<<<<< HEAD
-  <% end %>
-</tbody>
-=======
 </div>
->>>>>>> 45bca73811ad7e9ed4968eea168837e3fd9b7f89
