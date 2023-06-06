@@ -1,14 +1,14 @@
-# Creating a form for the user to fill out that will create a booking
-
 <div class="container py-5">
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Create a new booking</h3>
+        <h3>Create a new booking for <%= @pet.name %></h3>
+        <p><%= cl_image_tag @pet.photo.key, height: 300 , width: 400, crop: :fill %></p>
         <%= simple_form_for [@pet, @booking] do |f| %>
           <%= f.input :date %>
-          <%= f.association :pet, prompt: "Select a pet", input_html: {data: { controller: "tom-select"}} %>
-          <%= f.submit class: "btn btn-flat" %>
+          <%= f.input :pet %>
+          <%= raise %>
+          <%= f.submit class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
