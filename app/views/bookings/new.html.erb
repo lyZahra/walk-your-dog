@@ -5,7 +5,9 @@
         <h3>Create a new booking for <%= @pet.name %></h3>
         <p><%= cl_image_tag @pet.photo.key, height: 300 , width: 400, crop: :fill %></p>
         <%= simple_form_for [@pet, @booking] do |f| %>
-          <%= f.input :date %>
+          <%= f.input :date, as: :string %>
+          <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+          <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
           <%= f.submit class: "btn btn-primary" %>
         <% end %>
       </div>
