@@ -14,11 +14,10 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @pet = Pet.find(params[:pet_id])
-    authorize @booking
+    skip_authorization
   end
 
   def create
-    authorize @booking
     @booking = Booking.new(booking_params)
     @pet = Pet.find(params[:pet_id])
     @booking.pet = @pet
@@ -29,6 +28,7 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    skip_authorization
   end
 
   def edit
