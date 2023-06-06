@@ -3,27 +3,35 @@
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
 
-<p>
+<p class='text-danger'>
+  This doesn't work yet
   <%= @booking.booking_date %>
 </p>
-<p>
+<p class='text-success'>
+  This works:
   <%= @booking.status %>
 </p>
-<p>
+<p class='text-success'>
+  This works:
   <%= @booking.pet.name %>
 </p>
-<p>
-  <%= @booking.owner.name %>
+<p class='text-danger'>
+  This doesn't work yet
+  <%= @owner.name %>
 </p>
-<p>
-  <%= @booking.user.name %>
+<p class='text-danger'>
+  This doesn't work yet
+  <%= @user.name %>
 </p>
-<p>
+<p class='text-success'>
+  This works:
   <%= @booking.user.email %>
 </p>
-<p>
+<p class='text-danger'>
+  This doesn't work yet
   <%= @booking.pet.photo %>
 </p>
-<p>
+<p class='text-success'>
+  This works:
   <%= @booking.pet.description %>
 </p>
