@@ -46,3 +46,31 @@ daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", des
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
 daisy.save
+
+# Seed for bookings
+a = Booking.new(start_date: "2023-08-01", end_date: "2023-08-05", booking_date: "2023-06-20", status: "pending")
+a.pet = bella
+a.user = tom
+a.save
+
+b = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+b.pet = max
+b.user = juliette
+b.save
+
+c = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+c.pet = luna
+c.user = chris
+c.save
+
+d = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+d.pet = cooper
+d.user = safia
+d.save
+
+e = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+e.pet = daisy
+e.user = nurra
+e.save
+
+puts "Finished!"
