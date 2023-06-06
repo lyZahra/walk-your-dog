@@ -35,3 +35,8 @@
   This works:
   <%= @booking.pet.description %>
 </p>
+<p>
+  <% if policy(@booking).edit? %>
+    <%= link_to "Edit this booking", edit_booking_path(@booking) %> |
+  <% end %>
+</p>

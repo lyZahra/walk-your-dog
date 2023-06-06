@@ -8,14 +8,17 @@ class BookingsController < ApplicationController
     @pet = @booking.pet
     @owner = @pet.user
     @user = @booking.user
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
     @pet = Pet.find(params[:pet_id])
+    authorize @booking
   end
 
   def create
+    authorize @booking
     @booking = Booking.new(booking_params)
     @pet = Pet.find(params[:pet_id])
     @booking.pet = @pet
@@ -29,9 +32,11 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    authorize @booking
   end
 
   def update
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
