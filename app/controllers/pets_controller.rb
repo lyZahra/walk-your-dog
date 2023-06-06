@@ -7,6 +7,7 @@ class PetsController < ApplicationController
 
   def show
     # uses :set_pet
+    authorize @pet
   end
 
   def new
