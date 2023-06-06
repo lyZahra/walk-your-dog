@@ -8,7 +8,6 @@ class PetsController < ApplicationController
   def show
     # uses :set_pet
     authorize @pet
-    raise
   end
 
   def new
