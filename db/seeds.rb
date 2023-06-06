@@ -73,4 +73,30 @@ e.pet = daisy
 e.user = nurra
 e.save
 
+# create reviews
+review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_a.booking = a
+review_a.pet_id = 1
+review_a.save
+
+review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
+review_b.booking = b
+review_b.pet_id = 2
+review_b.save
+
+review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_c.booking = c
+review_c.pet_id = 3
+review_c.save
+
+review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
+review_d.booking = d
+review_d.pet_id = 4
+review_d.save
+
+review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_e.booking = e
+review_e.pet_id = 5
+review_e.save
+
 puts "Finished!"
