@@ -10,3 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Flatpickr for date picker feature
+// @import "flatpickr/dist/flatpickr.css";
+@import "flatpickr/dist/themes/airbnb";
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}

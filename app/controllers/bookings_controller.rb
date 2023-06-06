@@ -13,8 +13,10 @@ class BookingsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @booking.pet = @pet
     @booking.user = current_user
+    @booking.date = Date.today
+    @booking.status = "pending"
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to pet_booking_path(@booking, @pet, @booking)
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,6 +36,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :pet_id, :user_id)
+    params.require(:booking).permit(:date, :pet_id, :start_date, :end_date, :status, :user_id, :photo, :description)
   end
 end
