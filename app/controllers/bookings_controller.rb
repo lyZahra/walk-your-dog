@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
     @owner = @pet.user
     @user = @booking.user
     authorize @booking
-    raise
   end
 
   def new
