@@ -76,27 +76,27 @@ e.save
 # create reviews
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
-review_a.pet = bella
+review_a.pet_id = bella
 review_a.save
 
 review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_b.booking = b
-review_b.pet = max
+review_b.pet_id = max
 review_b.save
 
 review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_c.booking = c
-review_c.pet = luna
+review_c.pet_id = luna
 review_c.save
 
 review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_d.booking = d
-review_d.pet = cooper
+review_d.pet_id = cooper
 review_d.save
 
 review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_e.booking = e
-review_e.pet = daisy
+review_e.pet_id = daisy
 review_e.save
 
 puts "Finished!"
