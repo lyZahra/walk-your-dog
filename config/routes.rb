@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/dashboard' => 'users#show', as: :dashboard
+  get '/dashboard' => 'dashboards#show', as: :dashboard
 end
