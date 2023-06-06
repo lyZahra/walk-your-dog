@@ -11,10 +11,16 @@
 @import "components/index";
 @import "pages/index";
 
-a {
- text-decoration: none;
-}
+// Flatpickr for date picker feature
+// @import "flatpickr/dist/flatpickr.css";
+@import "flatpickr/dist/themes/airbnb";
 
-a:hover{
+a {
   text-decoration: none;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+
