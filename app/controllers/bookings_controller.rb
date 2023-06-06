@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @owner = @pet.user
     @user = @booking.user
     authorize @booking
+    raise
   end
 
   def new
@@ -47,6 +48,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :pet_id, :start_date, :end_date, :status, :user_id, :photo, :description)
+    params.require(:booking).permit(:date, :pet_id, :start_date, :end_date, :booking_date, :status, :user_id, :photo, :description)
   end
 end
