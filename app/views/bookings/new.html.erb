@@ -6,8 +6,6 @@
         <p><%= cl_image_tag @pet.photo.key, height: 300 , width: 400, crop: :fill %></p>
         <%= simple_form_for [@pet, @booking] do |f| %>
           <%= f.input :date %>
-          <%# <%= f.association :pet, prompt: "Select a pet", input_html: {data: { controller: "tom-select"}} %>
-
           <%= f.submit class: "btn btn-flat" %>
         <% end %>
       </div>
