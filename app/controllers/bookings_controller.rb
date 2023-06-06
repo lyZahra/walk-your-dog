@@ -13,6 +13,11 @@ class BookingsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @booking.pet = @pet
     @booking.user = current_user
+    @booking.date = Date.today
+    # @booking.status = "pending"
+
+
+    raise
     if @booking.save
       redirect_to booking_path(@booking)
     else
