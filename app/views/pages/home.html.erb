@@ -1,22 +1,24 @@
 <%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> %>
-<h1>Walk My Dog</h1>
-
 <div class="container">
-    <div class="row">
-
+  <div class="wrapper">
 
    <% @pets.each do |pet| %>
-   <div class="col">
-      <div class="card"  style="width: 18rem;">
+    <div class="col-sm">
+      <div class="card my-2"  style="width: 18rem;">
         <img class="card-img-" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Pomeranian.JPG" alt="cute dog">
-          <p>
-          <h3 ><%= pet.name %></h3>
+        <div>
+          <h3 ><%= link_to pet.name,  pet_path(pet)  %></h3>
+        </div>
+        <div>
           <h2><%= pet.breed %></h2>
-          <p><%= pet.description %></p>
+        </div>
+        <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
+          <%= pet.description %>
+        </div>
       </div>
       </div>
-  <% end %>
+    <% end %>
 
-    </div>
   </div>
+</div>
