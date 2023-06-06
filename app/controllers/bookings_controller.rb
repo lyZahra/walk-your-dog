@@ -16,7 +16,8 @@ class BookingsController < ApplicationController
     @booking.date = Date.today
     @booking.status = "pending"
     if @booking.save
-      redirect_to pet_booking_path(@booking, @pet, @booking)
+      redirect_to pet_booking_path(@booking, @pet)
+      raise
     else
       render :new, status: :unprocessable_entity
     end
