@@ -4,6 +4,10 @@ class PetPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
+    def index?
+      true
+    end
+
     def new?
       true
     end

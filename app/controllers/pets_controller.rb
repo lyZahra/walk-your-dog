@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_policy_scoped, :only => :index
 
   def index
     @pets = Pet.all
