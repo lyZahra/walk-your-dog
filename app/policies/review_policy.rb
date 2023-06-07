@@ -4,16 +4,16 @@ class ReviewPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
-    def new?
-      true
-    end
+  end
+  def new?
+    true
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
   end
 end

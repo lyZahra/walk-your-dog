@@ -8,6 +8,11 @@ class BookingsController < ApplicationController
     @pet = @booking.pet
     @owner = @pet.user
     @user = @booking.user
+    @review = Review.new
+
+    unless @booking.reviews.empty?
+      @existing_review = @booking.reviews.first
+    end
     authorize @booking
   end
 
