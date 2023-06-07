@@ -1,11 +1,9 @@
 class DashboardsController < ApplicationController
   def show
     @user = current_user
-    @requester = @booking.user
     # @user_subscriptions = UserSubscription.find_active_subscriptions_by_user(@user)
     @bookings = @user.bookings
     @pets = @user.pets
-    authorize @requester
     authorize @bookings
     authorize @pets
   end
