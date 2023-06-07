@@ -37,7 +37,7 @@
 <%= @existing_review&.comment %>
 <h1>New review</h1>
 <%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :rating %>
+  <%= f.input :rating , collection: 1..5 %>
   <%= f.input :comment %>
   <%= f.submit "Submit review", class: "btn btn-primary" %>
 <% end %>
