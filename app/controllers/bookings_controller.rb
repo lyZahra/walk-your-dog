@@ -32,16 +32,17 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    authorize @booking
+    skip_authorization
   end
 
   def update
-    authorize @booking
+    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
+    skip_authorization
   end
 
   private
