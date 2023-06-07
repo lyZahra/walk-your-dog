@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :set_booking, only: [:new, :create]
+
   def index
     @reviews = Review.all
   end
@@ -10,21 +12,29 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
-    @pet = Pet.find(params[:pet_id])
     authorize @review
   end
 
   def create
     @review = Review.new(review_params)
-    @pet = Pet.find(params[:pet_id])
-    @review.pet = @pet
-    @review.user = current_user
+    @review.booking = @booking
     authorize @review
     if @review.save
-      redirect_to pet_path(@pet)
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:comment, :rating)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
   end
 end

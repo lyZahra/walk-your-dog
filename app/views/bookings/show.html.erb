@@ -34,6 +34,14 @@
     </div>
   </div>
 </section>
+<%= @existing_review&.comment %>
+<h1>New review</h1>
+<%= simple_form_for [@booking, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+
 
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
