@@ -21,7 +21,7 @@
             </div>
             <div class="media">
               <label>Average rating:</label><br>
-              <p>&nbsp /5</p>
+              <p>&nbsp <%= @existing_review&.rating.to_i %>/5</p>
             </div>
             <div class="media">
               <label>Booking Date:</label><br>
@@ -35,8 +35,10 @@
     </div>
   </div>
 </section>
+<h3>All reviews:</h3>
+<p><%= @existing_review.rating.to_i %>stars</p>
 <%= @existing_review&.comment %>
-<h1>New review</h1>
+<h4>New review</h4>
 <%= simple_form_for [@booking, @review] do |f| %>
   <%= f.input :rating , collection: 1..5 %>
   <%= f.input :comment %>
