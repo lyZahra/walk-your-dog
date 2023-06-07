@@ -8,6 +8,7 @@ class PetsController < ApplicationController
   def show
     # uses :set_pet
     authorize @pet
+    @review = Review.new
     skip_authorization
   end
 
