@@ -1,18 +1,7 @@
+<% if @user.pets == nil %>
 
 <div class="container mx-8 my-4 px-4 py-4 bg-white border border-light">
-  <h1 class="pb-4">Hi, Nurra </h1>
-
-  <div class="container">
-    <div class="wrapper">
-      <% @pets.each do |pet| %>
-        <div class="col-sm">
-          <div class="card my-2"  style="width: 20rem;">
-            <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
-            <%= pet.name %>
-      </div>
-    <% end %>
-  </div>
-
+  <h1 class="pb-4">Hi, <%= @user.name.capitalize %> </h1>
 
   <div class="col mb-4">
     <h3>Requests</h3>
@@ -20,8 +9,8 @@
     <ol class="list-group list-group-flush">
       <% @bookings.each do |booking| %>
         <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="fw-bold"><%= booking.user.name%> Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
-          <div class="fw)light"><%= booking.user.email%></div>
+          <div class="fw-bold"><%= booking.user.name %> Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
+          <div class="fw-light"><%= booking.user.email%></div>
             <%= simple_form_for(booking) do |f| %>
             <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
             <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
@@ -31,7 +20,57 @@
     </ol>
   </div>
 </div>
-<%= raise %>
+
+
+<% else %>
+
+<div class="container mx-8 my-4 px-4 py-4 bg-white border border-light">
+  <h1 class="pb-4">Hi, <%= @user.name.capitalize %> </h1>
+
+  <div class="container inline-items">
+    <h3> How are ? </h3>
+      <% @pets.each do |pet| %>
+      <div>
+            <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 50%", height: "120px" %>
+            <%= pet.name %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="col mb-4">
+    <h3>Requests about your dogs</h3>
+
+    <ol class="list-group list-group-flush">
+      <% @bookings.each do |booking| %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="fw-bold"><%= booking.user.name %> Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
+          <div class="fw-light"><%= booking.user.email%></div>
+            <%= simple_form_for(booking) do |f| %>
+            <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
+            <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
+        </li>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="col mb-4">
+    <h3>Your requests to book other dogs</h3>
+
+    <ol class="list-group list-group-flush">
+      <% @bookings.each do |booking| %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="fw-light"> The Dog you want to meet : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
+          <p class="btn btn-info btn-sm"><%= booking.status.capitalize %></p>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>
+
+<% end %>
+
 
 <%# class="btn btn-warning btn-sm text-dark rounded-pill">Pending</span> %>
 <%# <span class="btn btn-outline-success btn-sm rounded-pill">Accepted</span> %>
