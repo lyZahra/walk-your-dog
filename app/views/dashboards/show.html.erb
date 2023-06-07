@@ -27,11 +27,11 @@
 <div class="container mx-8 my-4 px-4 py-4 bg-white border border-light">
   <h1 class="pb-4">Hi, <%= @user.name.capitalize %> </h1>
 
-  <div class="container inline-items mb-4">
+  <div class="container mb-4">
     <h3> How are ? </h3>
       <% @pets.each do |pet| %>
-      <div>
-            <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 50%" %>
+      <div class="inline-items">
+            <%= cl_image_tag pet.photo.key, crop: :fill, class: "thumbnail pb-2" %>
             <%= pet.name %>
       </div>
     <% end %>
@@ -44,8 +44,8 @@
     <ol class="list-group list-group-flush">
       <% @bookings.each do |booking| %>
         <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="fw-bold"><%= booking.user.name %> Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
-          <div class="fw-light"><%= booking.user.email%></div>
+          <div class="fw-bold">Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div><br>
+          <div class="fw-light start-item"><%= booking.user.email%></div>
             <%= simple_form_for(booking) do |f| %>
             <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
             <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
