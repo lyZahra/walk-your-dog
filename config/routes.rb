@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :pets do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:update, :show]
+
+  resources :bookings, only: [:update, :show, :edit]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -5,3 +5,21 @@ grid-template-columns: repeat(3, 1fr);
 grid-gap: 8px;
 grid-auto-rows: minmax(100px, auto);
 }
+
+.card {
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: small;
+}
+
+.card img {
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.card a {
+  text-decoration: none;
+}

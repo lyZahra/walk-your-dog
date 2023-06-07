@@ -12,13 +12,13 @@
                   <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
                 <% end %>
         <div>
-          <h3 ><%= link_to pet.name,  pet_path(pet)  %></h3>
+          <h2><%= link_to pet.name,  pet_path(pet) %></h2>
         </div>
         <div>
-          <h2><%= pet.breed %></h2>
+          <h3><%= pet.breed %></h3>
         </div>
         <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
-          <%= pet.description %>
+          <p class="fw-light"><%= pet.description %></p>
         </div>
       </div>
       </div>
