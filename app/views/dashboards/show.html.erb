@@ -31,7 +31,7 @@
     <h3> How are ? </h3>
       <% @pets.each do |pet| %>
       <div>
-            <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 50%", height: "120px" %>
+            <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 50%" %>
             <%= pet.name %>
       </div>
     <% end %>
