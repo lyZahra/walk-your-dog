@@ -9,6 +9,8 @@ require "open-uri"
 puts "Cleaning up database..."
 Pet.destroy_all
 User.destroy_all
+Booking.destroy_all
+Review.destroy_all
 puts "Database cleaned"
 
 juliette = User.create!(email: "walkyourdog.user@gmail.com", password: "secret", name: "Juliette")
@@ -46,3 +48,57 @@ daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", des
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
 daisy.save
+
+# Seed for bookings
+a = Booking.new(start_date: "2023-08-01", end_date: "2023-08-05", booking_date: "2023-06-20", status: "pending")
+a.pet = bella
+a.user = tom
+a.save
+
+b = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+b.pet = max
+b.user = juliette
+b.save
+
+c = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+c.pet = luna
+c.user = chris
+c.save
+
+d = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+d.pet = cooper
+d.user = safia
+d.save
+
+e = Booking.new(start_date: "2021-08-01", end_date: "2021-08-05", booking_date: "2023-06-20", status: "pending")
+e.pet = daisy
+e.user = nurra
+e.save
+
+# create reviews
+review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_a.booking = a
+review_a.pet = a.pet
+review_a.save!
+
+review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
+review_b.booking = b
+review_b.pet = b.pet
+review_b.save!
+
+review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_c.booking = c
+review_c.pet = c.pet
+review_c.save!
+
+review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
+review_d.booking = d
+review_d.pet = d.pet
+review_d.save!
+
+review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
+review_e.booking = e
+review_e.pet = e.pet
+review_e.save!
+
+puts "Finished!"

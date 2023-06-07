@@ -1,8 +1,12 @@
 class DashboardsController < ApplicationController
   def show
-    # params[:id] == current_user.id unless params[:id]
-    @user = current_user.booking
+    @user = current_user
     # @user_subscriptions = UserSubscription.find_active_subscriptions_by_user(@user)
+    @bookings = @user.bookings
+    @pets = @user.pets
+    authorize @bookings
+    authorize @pets
   end
-
 end
+
+  #simple form </ booking parameter > call the update through booking controller > use FE display with IF statement

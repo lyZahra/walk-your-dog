@@ -13,12 +13,13 @@
   </head>
 
   <body>
-    <div class="min-vh-100">
       <%= render "shared/header"%>
+    <div class="min-vh-100 px-3">
        <%= yield %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
       <%= render 'shared/footer' %>
+      <%= render "shared/flashes" %>
   </body>
 </html>
