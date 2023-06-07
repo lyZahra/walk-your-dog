@@ -6,10 +6,11 @@ class PetsController < ApplicationController
     @pets = Pet.all
 
     # The `geocoded` scope filters only flats with coordinates
-    @markers = @pets.geocoded.map do |flat|
+    @markers = @pets.geocoded.map do |pet|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: pet.latitude,
+        lng: pet.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {pet: pet})
       }
     end
     skip_authorization
