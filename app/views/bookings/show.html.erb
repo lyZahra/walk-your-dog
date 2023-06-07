@@ -1,4 +1,4 @@
-<h1>Booking Page - NEED TO UPDATE</h1>
+<h1>Booking Status For <%= @pet.name %> </h1>
 
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
 <%# <%= link_to "accept", edit_booking_path(@booking, status: "accepted") %>
@@ -13,7 +13,7 @@
 </p>
 <p class='text-success'>
   This works: Pet Name
-  <%= @booking.pet.name %>
+  <%= @pet.name %>
 </p>
 <p class='text-success'>
   This works: Owner Name
@@ -33,7 +33,7 @@
 </p>
 <p class='text-success'>
   This works:  Pet Description
-  <%= @booking.pet.description %>
+  <%= @pet.description %>
 </p>
 <p>
   <% if policy(@booking).edit? %>
