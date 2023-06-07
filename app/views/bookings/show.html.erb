@@ -28,6 +28,7 @@
               <p>&nbsp <%= @booking.booking_date %> </p>
             </div>
             <p class="btn btn-info"><%= @booking.status.capitalize %></p>
+            <p class="btn btn-light"><%= link_to "To see updates about your booking",  dashboard_path, class:"nav-link" %></p>
           </div>
         </div>
       </div>
