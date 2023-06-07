@@ -9,10 +9,12 @@ class PetsController < ApplicationController
     # uses :set_pet
     authorize @pet
     @review = Review.new
+    skip_authorization
   end
 
   def new
     @pet = Pet.new
+    skip_authorization
   end
 
   def create
@@ -23,6 +25,7 @@ class PetsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+    skip_authorization
   end
 
   def edit
