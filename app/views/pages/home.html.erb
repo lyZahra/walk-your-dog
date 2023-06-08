@@ -1,16 +1,19 @@
 <%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> %>
+
 <div class="container">
   <div class="wrapper">
    <% @pets.each do |pet| %>
     <div class="col-sm">
-      <div class="card my-2"  style="width: 20rem;">
+      <div class="pet-card">
         <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
+             <div>
               <% if pet.photo.key.present? %>
                   <%= cl_image_tag pet.photo.key, height: 300 , width: 320 , crop: :fill %>
                 <% else  %>
                   <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
                 <% end %>
+                </div>
         <div>
           <h2><%= link_to pet.name,  pet_path(pet) %></h2>
         </div>
