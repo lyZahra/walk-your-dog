@@ -11,7 +11,7 @@ class PetsController < ApplicationController
         lat: pet.latitude,
         lng: pet.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {pet: pet}),
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker", locals: {pet: pet})
       }
     end
     skip_authorization
