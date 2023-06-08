@@ -1,33 +1,26 @@
 <body>
     <div class="content">
       <div class="cards">
-        <div class="card" style="background-color: #F7F1E3">
-          <%= @pets.first.name %>
-        </div>
 
-        <div class="card" style="background-color: #F7F1E3">
-          TODO: iterate through Pet.all showing the TOP n cards
-        </div>
-
-        <div class="card" style="background-color: #F7F1E3">
-          <%= @pets.last.name %>
-        </div>
-
-        <div class="card" style="background-color: #F7F1E3">
-          <%= @pets.first.name %>
-        </div>
-
-        <div class="card" style="background-color: #F7F1E3">
-          <%= @pets.last.name %>
-        </div>
-
-        <div class="card" style="background-color: #F7F1E3">
-          <%= @pets.first.name %>
-        </div>
+        <% @pets.each do |pet| %>
+          <%= link_to pet_path(pet) do %>
+          <div class="card-product" id="map-clickable-card">
+              <% if pet.photo.key.present? %>
+                <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
+              <% else  %>
+                <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
+              <% end %>
+              <div class="card-product-infos">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %> </p>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
 
       </div>
 
-      <div id="map" style="width: 100%; height: 600px;"
+      <div id="map" style="height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
