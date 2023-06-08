@@ -28,19 +28,21 @@
   </div>
 </div>
 
-<div style="padding-left: 15px;">
-  <h2>Reviews:</h2>
-</div>
-<ul class="list-group">
-<% unless @existing_reviews.empty? %>
-  <% @existing_reviews.each do |review| %>
-    <li class="list-group-item" style="margin: 10px; padding: 10px; border-radius: 10px; box-shadow: 1px 2px lightgrey; text-align: left;">
-      <% review.rating.to_i.times do %>
-        <i class="fas fa-star"></i>
-      <% end %>
-      <p><%= review.comment %></p>
-    </li>
+<div style="padding:65px;">
+  <div style="padding-left: 15px;">
+    <h2>Reviews:</h2>
+  </div>
+  <ul class="list-group">
+  <% unless @existing_reviews.empty? %>
+    <% @existing_reviews.each do |review| %>
+      <li class="list-group-item" style="margin: 10px; padding: 10px; border-radius: 10px; box-shadow: 1px 2px lightgrey; text-align: left;">
+        <% review.rating.to_i.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <p><%= review.comment %></p>
+      </li>
+    <% end %>
+    <% else %>
+      <p>No reviews yet</p>
   <% end %>
-  <% else %>
-    <p>No reviews yet</p>
-<% end %>
+</div>
