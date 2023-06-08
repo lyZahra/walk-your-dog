@@ -69,7 +69,7 @@ cooper.user = juliette
 cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
 cooper.save
 
-daisy_file = URI.open("https://source.unsplash.com/fr/photos/795upe4hZRw")
+daisy_file = URI.open("https://images.unsplash.com/photo-1564067886520-e1ff2767eb1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNoaWVuJTIwY29xdWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60")
 daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
@@ -114,42 +114,22 @@ e.save
 
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
-<<<<<<< HEAD
-# review_a.pet = a.pet
-=======
->>>>>>> master
 review_a.save!
 
 review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_b.booking = b
-<<<<<<< HEAD
-# review_b.pet = b.pet
-=======
->>>>>>> master
 review_b.save!
 
 review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_c.booking = c
-<<<<<<< HEAD
-# review_c.pet = c.pet
-=======
->>>>>>> master
 review_c.save!
 
 review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_d.booking = d
-<<<<<<< HEAD
-# review_d.pet = d.pet
-=======
->>>>>>> master
 review_d.save!
 
 review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_e.booking = e
-<<<<<<< HEAD
-# review_e.pet = e.pet
-=======
->>>>>>> master
 review_e.save!
 
 puts "Finished!"
