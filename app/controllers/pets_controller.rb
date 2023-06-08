@@ -20,6 +20,8 @@ class PetsController < ApplicationController
   def show
     # uses :set_pet
     @bookings = @pet.bookings
+
+    @existing_reviews = @pet.reviews
     @booking = Booking.new
     authorize @pet
     @review = Review.new
