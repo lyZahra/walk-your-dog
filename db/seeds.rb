@@ -69,7 +69,7 @@ cooper.user = safia
 cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
 cooper.save
 
-daisy_file = URI.open("https://source.unsplash.com/fr/photos/795upe4hZRw")
+daisy_file = URI.open("https://images.unsplash.com/photo-1518378188025-22bd89516ee2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZ3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60")
 daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
@@ -111,6 +111,24 @@ e.user = nurra
 e.save
 
 # create reviews
+num_reviews = 10
+num_reviews.times do
+  # Generate fake review data using Faker
+  review = Review.new(
+    comment: Faker::Lorem.paragraph,
+    rating: rand(1..5),
+    booking: Booking.all.sample
+  )
+  review.save!
+end
+
+# bookings = Booking.all
+# num_review = 10
+# num_review.times do
+#   review = Review.new(comment: Faker::Lorem.paragraph, rating: rand(1..5))
+#   review.booking = users.sample
+#   review.save!
+# end
 
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
