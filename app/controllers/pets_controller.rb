@@ -20,9 +20,12 @@ class PetsController < ApplicationController
   def show
     # uses :set_pet
     @bookings = @pet.bookings
+
+    @existing_reviews = @pet.reviews
     @booking = Booking.new
     authorize @pet
     @review = Review.new
+    @other_pets = Pet.all.reject { |pet| pet.id == @pet.id }
     skip_authorization
   end
 

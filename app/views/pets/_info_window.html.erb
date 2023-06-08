@@ -1,10 +1,15 @@
 <div>
-  <% if pet.photo.key.present? %>
-            <%= cl_image_tag pet.photo.key, style: "border-radius: 10px;", class: "mapbox-popup-img" %>
+  <%= link_to pet_path(pet) do %>
+      <div class="card-product" id="map-clickable-card">
+          <% if pet.photo.key.present? %>
+            <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
           <% else  %>
             <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
           <% end %>
-  </br>
-  <h3><%= pet.name %></h3>
-  <p><%= pet.address %></p>
+          <div class="card-product-infos">
+            <h2 class="text-decoration-none p-map"><%= pet.name %></h2>
+            <p class="text-decoration-none h2-map"><%= pet.breed %> </p>
+          </div>
+      </div>
+      <% end %>
 </div>
