@@ -20,9 +20,13 @@
         <div>
           <h3><%= pet.breed %></h3>
         </div>
-            <div class="media">
-      <label>Average rating:</label><br>
-      <p>&nbsp /5</p>
+        <div class="media">
+          <label>Average rating:</label><br>
+          <% if pet.average_rating.to_f > 0 %>
+            <p>&nbsp <%= pet.average_rating.to_f %>/5</p>
+          <% else %>
+            <p>&nbsp No reviews yet</p>
+          <% end %>
       </div>
         <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
          <%= link_to pet.description,  pet_path(pet)  %>

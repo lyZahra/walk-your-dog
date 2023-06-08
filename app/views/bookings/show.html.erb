@@ -35,13 +35,13 @@
     </div>
   </div>
 </section>
-<h3>All reviews:</h3>
-<%= @existing_review&.comment %>
 <h4>New review</h4>
 <%= simple_form_for [@booking, @review] do |f| %>
   <%= f.input :rating , collection: 1..5 %>
   <%= f.input :comment %>
   <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <%# redirect to pet show page %>
+  <%= link_to "Back to pet", pet_path(@pet) %>
 <% end %>
 
 
