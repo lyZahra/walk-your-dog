@@ -23,7 +23,17 @@
         <label>Average rating:&nbsp</label><br>
         <p> <%= @pet.average_rating %></p>
       </div>
-      <a href="<%= new_pet_booking_path(@pet) %>" class="btn btn-primary">Book now</a>
+
+      <%# book now form %>
+      <div class="media">
+          <div class="bg-white rounded p-3 shadow">
+            <%= simple_form_for [@pet, @booking] do |f| %>
+              <%= f.input :booking_date, input_html: { data: { flatpickr_target: "bookingDate" } } %>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+          </div>
+      </div>
+
     </div>
   </div>
 </div>
