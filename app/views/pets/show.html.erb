@@ -34,9 +34,13 @@
 </section>
 <ul class="list-group">
 
-<% @bookings.each do |booking| %>
-  <li class="list-group-item">
-    <p><%= booking.review.comment %></p>
-    <p><%= booking.review.rating %></p>
-  </li>
+<% if @booking.review.present? %>
+  <% @bookings.each do |booking| %>
+    <li class="list-group-item">
+      <p><%= booking.review.comment %></p>
+      <p><%= booking.review.rating %></p>
+    </li>
+  <% end %>
+  <% else %>
+    <p>No reviews yet</p>
 <% end %>
