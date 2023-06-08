@@ -65,11 +65,11 @@ luna.save
 
 cooper_file = URI.open("https://images.unsplash.com/photo-1518378188025-22bd89516ee2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRvZ3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60")
 cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
-cooper.user = safia
+cooper.user = juliette
 cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
 cooper.save
 
-daisy_file = URI.open("https://source.unsplash.com/fr/photos/795upe4hZRw")
+daisy_file = URI.open("https://images.unsplash.com/photo-1564067886520-e1ff2767eb1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNoaWVuJTIwY29xdWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60")
 daisy = Pet.new(name: "Daisy", availability: false, breed: "german sheperd", description: "Daisy is super kind, she loves walking under rain")
 daisy.user = nurra
 daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/png")
