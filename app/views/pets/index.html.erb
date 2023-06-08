@@ -23,9 +23,18 @@
       <div id="map" style="height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      >
+          <%= simple_form_for :search, method: :get do |f| %>
+            <%= f.input :address,
+              input_html: {data: {address_autocomplete_target: "address"}},
+              wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+            %>
+            <%= f.submit %>
+          <% end %>
       </div>
       <%# <img id="map" src='https://raw.githubusercontent.com/lewagon/layouts-demo/gh-pages/images/mapbox.png'> %>
+
     </div>
 
 </body>
