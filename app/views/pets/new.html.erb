@@ -10,3 +10,24 @@
     </div>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="row" style="background-color: white; padding: 30px; margin: 20px; border-radius: 10px; box-shadow: 1px 2px lightgrey;">
+    <div class="d-flex">
+
+        <div class="col-sm-8">
+          <div>
+            <% if @pet.photo.key.present? %>
+              <%= cl_image_tag @pet.photo.key, crop: :fill, style: "border-radius: 3px", class: "show-card-img" %>
+            <% else  %>
+              <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
