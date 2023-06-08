@@ -10,9 +10,11 @@ class BookingsController < ApplicationController
     @user = @booking.user
     @review = Review.new
 
+
     unless @booking.review.nil?
       @existing_review = @booking.review
     end
+
     authorize @booking
   end
 
