@@ -14,7 +14,9 @@ export default class extends Controller {
       container: this.element,
       // style: "mapbox://styles/mapbox/streets-v10"
       // style: "mapbox://styles/crg1234/climxtrcl00n301r08sfb3jk1" globe version
-      style: "mapbox://styles/crg1234/clin81q2h001p01p79a25bqi4"
+      style: "mapbox://styles/crg1234/clin81q2h001p01p79a25bqi4",
+      center: [51.5072, 0.1276],
+      zoom: 9
     })
 
     this.#addMarkersToShowMap()
