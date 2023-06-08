@@ -37,6 +37,9 @@ gem "jbuilder"
 # Cloudinary gem for Rails
 gem "cloudinary"
 
+# Geocoder
+gem "geocoder"
+
 
 
 # Use Redis adapter to run Action Cable in production
