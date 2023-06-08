@@ -29,7 +29,7 @@
           <div class="bg-white rounded p-3 shadow">
             <%= simple_form_for [@pet, @booking] do |f| %>
               <%= f.input :booking_date, input_html: { data: { flatpickr_target: "bookingDate" } } %>
-              <%= f.submit class: "btn btn-primary" %>
+              <%= f.submit class: "btn btn-info" %>
             <% end %>
           </div>
       </div>
