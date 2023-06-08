@@ -39,7 +39,7 @@ luna.save
 
 cooper_file = URI.open("https://source.unsplash.com/random/?dog")
 cooper = Pet.new(name: "Cooper", availability: true, breed: "bulldog", description: "very social ! Cooper loves others dogs")
-cooper.user = safia
+cooper.user = juliette
 cooper.photo.attach(io: cooper_file, filename: "cooper.png", content_type: "image/png")
 cooper.save
 
@@ -78,27 +78,27 @@ e.save
 # create reviews
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
-review_a.pet = a.pet
+# review_a.pet = a.pet
 review_a.save!
 
 review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_b.booking = b
-review_b.pet = b.pet
+# review_b.pet = b.pet
 review_b.save!
 
 review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_c.booking = c
-review_c.pet = c.pet
+# review_c.pet = c.pet
 review_c.save!
 
 review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_d.booking = d
-review_d.pet = d.pet
+# review_d.pet = d.pet
 review_d.save!
 
 review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_e.booking = e
-review_e.pet = e.pet
+# review_e.pet = e.pet
 review_e.save!
 
 puts "Finished!"

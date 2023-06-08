@@ -1,78 +1,114 @@
-<% if @user.pets == nil %>
 
-<div class="container mx-8 my-4 px-4 py-4 bg-white border border-light">
-  <h1 class="pb-4">Hi, <%= @user.name.capitalize %> </h1>
-
-  <div class="col mb-4">
-    <h3>Requests</h3>
-
-    <ol class="list-group list-group-flush">
-      <% @bookings.each do |booking| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="fw-bold"><%= booking.user.name %> Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
-          <div class="fw-light"><%= booking.user.email%></div>
-            <%= simple_form_for(booking) do |f| %>
-            <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
-            <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
-        </li>
-        <% end %>
-      <% end %>
-    </ol>
+  <div class="bg-white px-4 py-4 border-bottom">
+    <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
   </div>
-</div>
 
+<div class="bg-white px-4 py-4 border-botom">
+  <nav class="pt-6 pl-4 pr-4">
+    <div class="nav nav-tabs tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">My Dogs</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Requests About My Dogs</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Others Dogs' Bookings</button>
+    </div>
+  </nav>
 
-<% else %>
-
-<div class="container mx-8 my-4 px-4 py-4 bg-white border border-light">
-  <h1 class="pb-4">Hi, <%= @user.name.capitalize %> </h1>
-
-  <div class="container mb-4">
-    <h3> How are ? </h3>
-      <% @pets.each do |pet| %>
-      <div class="inline-items">
-            <%= cl_image_tag pet.photo.key, crop: :fill, class: "thumbnail pb-2" %>
-            <%= pet.name %>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="container mt-4 mb-4">
+        <h3> How are ? </h3>
+        <% if @pets.empty? %>
+          <p>You have no pets yet</p>
+          <p>Become a Dog's mum or dad</p>
+        <% else %>
+          <% @pets.each do |pet| %>
+            <div class="inline-items">
+                <%= cl_image_tag pet.photo.key, crop: :fill, class: "thumbnail pb-2" %>
+                <%= pet.name %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
 
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="mt-4 mb-4">
+        <h3>Requests about your dogs</h3>
+        <% if @bookings_for_my_dogs.empty? %>
+          <p>You have no pets yet</p>
+          <p>Become a Dog's mum or dad</p>
 
-  <div class="col mb-4">
-    <h3>Requests about your dogs</h3>
+          <% else %>
+          <table class="table mb-2 mt-2 table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Dogs</th>
+                <th scope="col">Date</th>
+                <th scope="col">From</th>
+                <th scope="col">Walker's infos</th>
+                <th scope="col">Request's status</th>
+              </tr>
+            </thead>
 
-    <ol class="list-group list-group-flush">
-      <% @bookings.each do |booking| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="fw-bold">Dog : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div><br>
-          <div class="fw-light start-item"><%= booking.user.email%></div>
-            <%= simple_form_for(booking) do |f| %>
-            <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
-            <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
-        </li>
-        <% end %>
-      <% end %>
-    </ol>
-  </div>
+            <tbody>
+              <% @bookings_for_my_dogs.each do |booking| %>
+                <tr>
+                  <td><%= booking.pet.name %></td>
+                  <td><%= booking.booking_date %></td>
+                  <td><%= booking.user.name%></td>
+                  <td><%= booking.user.email%></td>
+                  <td>
+                    <%= simple_form_for(booking) do |f| %>
+                    <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
+                    <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
 
-  <div class="col mb-4">
-    <h3>Your requests to book other dogs</h3>
+          <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
 
-    <ol class="list-group list-group-flush">
-      <% @bookings.each do |booking| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="fw-light"> The Dog you want to meet : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
-          <p class="btn btn-info btn-sm rounded-pill"><%= booking.status.capitalize %></p>
-        </li>
-      <% end %>
-    </ol>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <div class="col mt-4 mb-4">
+        <h3>Your requests to book other dogs</h3>
+
+          <ol class="list-group list-group-flush">
+            <% @bookings.each do |booking| %>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="fw-light"> The Dog you want to meet : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
+                  <div class="d-flex">
+                    <% if booking.status == "pending"%>
+                    <span class="position p-2 bg-warning border border-light rounded-circle">
+                      <span class="visually-hidden">Status</span>
+                    </span>
+                    <p>Status: <%= booking.status.capitalize %></p>
+                    <% elsif booking.status == "accepted" %>
+                    <span class="position-absolute p-2 bg-success border border-light rounded-circle">
+                      <span class="visually-hidden">Status</span>
+                    </span>
+                    <% elsif booking.status == "denied" %>
+                    <span class="position-absolute p-2 bg-warning border border-light rounded-circle">
+                      <span class="visually-hidden">Status</span>
+                    </span>
+                    <% else booking.status == "completed" %>
+                    <span class="position-absolute p-2 bg-secondary border border-light rounded-circle">
+                      <span class="visually-hidden">Status</span>
+                    </span>
+                    <% end %>
+                  </div>
+              </li>
+            <% end %>
+          </ol>
+      </div>
+    </div>
   </div>
 </div>
 
-<% end %>
 
-
-<%# class="btn btn-warning btn-sm text-dark rounded-pill">Pending</span> %>
-<%# <span class="btn btn-outline-success btn-sm rounded-pill">Accepted</span> %>
+<%# class="btn btn-warning btn-sm text-dark rounded-pill"></span> %>
+<%# <span class="btn btn-outline-success btn-sm rounded-pill"></span> %>
 <%# <span class="btn btn-outline-danger rounded-pill">Denied</span> %>
 <%# <span class="btn btn-light text-dark rounded-pill">Completed</span> %>
