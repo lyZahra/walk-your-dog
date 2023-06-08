@@ -4,7 +4,7 @@
   <div class="wrapper">
    <% @pets.each do |pet| %>
     <div class="col-sm">
-      <div class="card my-2"  style="width: 20rem;">
+      <div class="pet-card ">
         <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
               <% if pet.photo.key.present? %>
                   <%= cl_image_tag pet.photo.key, height: 300 , width: 320 , crop: :fill %>
@@ -17,8 +17,21 @@
         <div>
           <h3><%= pet.breed %></h3>
         </div>
+        <div class="media">
+          <label>Average rating:</label><br>
+          <p>&nbsp /5</p>
+        </div>
         <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
           <p class="fw-light"><%= pet.description %></p>
+        </div>
+        <div>
+          <h3><%= pet.breed %></h3>
+          <div class="row about-list">
+          <div class="col-md-6">
+            <div class="media">
+              <label>Owner's name:</label><br>
+              <p>&nbsp<%= @pet.user.name %></p>
+            </div>
         </div>
       </div>
       </div>
