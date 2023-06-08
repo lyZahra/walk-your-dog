@@ -4,7 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    marker: String
   }
 
   connect() {
@@ -16,7 +17,8 @@ export default class extends Controller {
       style: "mapbox://styles/crg1234/clin81q2h001p01p79a25bqi4"
     })
 
-    this.#addMarkersToMap()
+    this.#addMarkersToShowMap()
+    this.#addMarketToMap
     this.#fitMapToMarkers()
   }
 
@@ -33,6 +35,16 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
+  #addMarkerToShowMap(marker) {
+    const customMarker = document.createElement("div")
+    customMarker.innerHTML = marker.marker_html
+
+    new mapboxgl.Marker(customMarker)
+      .setLngLat([marker.lng, marker.lat])
+      .addTo(this.map)
+  }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
