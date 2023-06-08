@@ -1,25 +1,39 @@
 // Specific CSS for your home-page
-.wrapper {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap: 8px;
-grid-auto-rows: minmax(100px, auto);
+body {
+  background-color: #F7F1E3;
 }
 
-.card {
-  border-radius: 1px;
+.wrapper {
+  border-radius: 3px;
+  display: grid;
+  margin-top: 18px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 8px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.pet-card {
+  background-color: white;
+  width: 20rem;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  padding-left: 3px;
-  padding-right: 3px;
   font-size: small;
 }
 
+.card {
+border-radius: 1px;
+box-shadow: 0 0 10px rgba(0,0,0,0.2);
+padding-left: 3px;
+padding-right: 3px;
+font-size: small;
+}
+
 .card img {
-  padding-top: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
+padding-top: 2px;
+padding-left: 2px;
+padding-right: 2px;
 }
 
 .card a {
-  text-decoration: none;
+text-decoration: none;
 }

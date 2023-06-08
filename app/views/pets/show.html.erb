@@ -22,8 +22,8 @@
               <p>&nbsp<%= @pet.user.name %></p>
             </div>
             <div class="media">
-              <label>Average rating:</label><br>
-              <p>&nbsp /5</p>
+              <label>Average rating:&nbsp</label><br>
+              <p> <%= @pet.average_rating %></p>
             </div>
             <a href="<%= new_pet_booking_path(@pet) %>" class="btn btn-info">Book now</a>
           </div>
@@ -32,3 +32,15 @@
     </div>
   </div>
 </section>
+<ul class="list-group">
+
+<% if @booking.review.present? %>
+  <% @bookings.each do |booking| %>
+    <li class="list-group-item">
+      <p><%= booking.review.comment %></p>
+      <p><%= booking.review.rating %></p>
+    </li>
+  <% end %>
+  <% else %>
+    <p>No reviews yet</p>
+<% end %>
