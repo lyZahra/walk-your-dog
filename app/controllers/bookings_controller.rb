@@ -9,10 +9,7 @@ class BookingsController < ApplicationController
     @owner = @pet.user
     @user = @booking.user
     @review = Review.new
-
-    unless @booking.reviews.empty?
-      @existing_review = @booking.reviews.first
-    end
+    @existing_review = @booking.review
     authorize @booking
   end
 
