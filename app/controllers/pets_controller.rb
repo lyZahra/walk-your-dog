@@ -7,6 +7,8 @@ class PetsController < ApplicationController
 
   def show
     # uses :set_pet
+    @bookings = @pet.bookings
+    @booking = Booking.new
     authorize @pet
     @review = Review.new
     skip_authorization
