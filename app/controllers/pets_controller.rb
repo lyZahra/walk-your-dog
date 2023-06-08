@@ -25,6 +25,7 @@ class PetsController < ApplicationController
     @booking = Booking.new
     authorize @pet
     @review = Review.new
+    @other_pets = Pet.all.reject { |pet| pet.id == @pet.id }
     skip_authorization
   end
 

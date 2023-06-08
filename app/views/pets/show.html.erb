@@ -1,51 +1,61 @@
 <div style="padding-top: 15px;">
   <%= link_to "← Back to home", root_path %>
 </div>
-<section class="section about-section gray-bg" id="about" style="padding: 100px;">
-  <div class="row align-items-center">
-    <div class="col-lg-6 text-center">
+
+  <div class="container">
+  <div class="row" style="background-color: white; padding: 30px; margin: 20px; border-radius: 10px; box-shadow: 1px 2px lightgrey;">
+      <div class="col-sm-4">
         <% if @pet.photo.key.present? %>
-          <%= cl_image_tag @pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
+        <%= cl_image_tag @pet.photo.key, crop: :fill, style: "border-radius: 3px;", class: "show-image" %>
         <% else  %>
-          <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
+        <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
         <% end %>
-    </div>
-    <div class="col-lg-6">
-      <div class="about-text go-to" style="background-color: lightgrey; padding: 30px; margin: 20px; border-radius: 10px; box-shadow: 1px 2px lightgrey;">
+      </div>
+      <div class="col-sm-8">
         <h1 class="dark-color"><%= @pet.name %></h1>
         <h2 class="theme-color lead">Breed: <%= @pet.breed.capitalize %> </h2>
         <p>"<%= @pet.description %>"</p>
-        <div class="row about-list">
-          <div class="col-md-6">
-            <div class="media">
-              <label>Owner's name:</label><br>
-              <p>&nbsp<%= @pet.user.name %></p>
-            </div>
-            <div class="media">
-              <label>Average rating:&nbsp</label><br>
-              <p> <%= @pet.average_rating %></p>
-            </div>
-            <a href="<%= new_pet_booking_path(@pet) %>" class="btn btn-info">Book now</a>
-          </div>
-        </div>
+      <div class="media">
+        <label>Owner's name:</label><br>
+        <p>&nbsp<%= @pet.user.name %></p>
+      </div>
+      <div class="media">
+        <label>Average rating:</label><br>
+        <p>&nbsp /5</p>
+      </div>
+        <a href="<%= new_pet_booking_path(@pet) %>" class="btn btn-primary">Book now</a>
+        // change this form to actually submit to create a booking
       </div>
     </div>
   </div>
-</section>
 
-<div style="padding-left: 15px;">
-  <h2>Reviews:</h2>
-</div>
-<ul class="list-group">
-<% unless @existing_reviews.empty? %>
-  <% @existing_reviews.each do |review| %>
-    <li class="list-group-item" style="margin: 10px; padding: 10px; border-radius: 10px; box-shadow: 1px 2px lightgrey; text-align: left;">
-      <% review.rating.to_i.times do %>
-        <i class="fas fa-star"></i>
-      <% end %>
-      <p><%= review.comment %></p>
-    </li>
-  <% end %>
-  <% else %>
-    <p>No reviews yet</p>
-<% end %>
+  <div class="container">
+  <div class="wrapper">
+   <% @other_pets.each do |pet| %>
+    <div class="col-sm">
+      <div class="pet-card">
+        <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
+        <div>
+          <% if pet.photo.key.present? %>
+          <%= cl_image_tag pet.photo.key, height: 300 , width: 320 , crop: :fill %>
+          <% else  %>
+          <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon">
+          <% end %>
+          </div>
+        <div>
+          <h2><%= link_to pet.name,  pet_path(pet) %></h2>
+        </div>
+        <div>
+          <h3><%= pet.breed %></h3>
+        </div>
+            <div class="media">
+      <label>Average rating:</label><br>
+      <p>&nbsp /5</p>
+      </div>
+        <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
+         <%= link_to pet.description,  pet_path(pet)  %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
