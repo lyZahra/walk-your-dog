@@ -1,0 +1,10 @@
+<div>
+  <% if pet.photo.key.present? %>
+            <%= cl_image_tag pet.photo.key, style: "border-radius: 10px;", class: "mapbox-popup-img" %>
+          <% else  %>
+            <img src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="dog icon" style="border-radius: 10px;">
+          <% end %>
+  </br>
+  <h3><%= pet.name %></h3>
+  <p><%= pet.address %></p>
+</div>

@@ -26,10 +26,21 @@
               <p>&nbsp /5</p>
             </div>
             <a href="<%= new_pet_booking_path(@pet) %>" class="btn btn-info">Book now</a>
-            // change this form to actually submit to create a booking
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<ul class="list-group">
+
+<% if @booking.review.present? %>
+  <% @bookings.each do |booking| %>
+    <li class="list-group-item">
+      <p><%= booking.review.comment %></p>
+      <p><%= booking.review.rating %></p>
+    </li>
+  <% end %>
+  <% else %>
+    <p>No reviews yet</p>
+<% end %>

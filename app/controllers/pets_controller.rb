@@ -1,12 +1,26 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_policy_scoped, :only => :index
 
   def index
     @pets = Pet.all
+
+    # The `geocoded` scope filters only flats with coordinates
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {pet: pet}),
+        marker_html: render_to_string(partial: "marker", locals: {pet: pet})
+      }
+    end
+    skip_authorization
   end
 
   def show
     # uses :set_pet
+    @bookings = @pet.bookings
+    @booking = Booking.new
     authorize @pet
     @review = Review.new
     skip_authorization
