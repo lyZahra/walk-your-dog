@@ -9,7 +9,7 @@ class Pet < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def average_rating
-    return "#{reviews.map(&:rating).sum / reviews.count}/5" if reviews.present?
+    return "#{reviews.map(&:rating).sum / reviews.count} stars" if reviews.present?
 
     "No reviews yet"
   end

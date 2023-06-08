@@ -32,13 +32,18 @@
     </div>
   </div>
 </section>
-<ul class="list-group">
 
-<% if @booking.review.present? %>
-  <% @bookings.each do |booking| %>
-    <li class="list-group-item">
-      <p><%= booking.review.comment %></p>
-      <p><%= booking.review.rating %></p>
+<div style="padding-left: 15px;">
+  <h2>Reviews:</h2>
+</div>
+<ul class="list-group">
+<% unless @existing_reviews.empty? %>
+  <% @existing_reviews.each do |review| %>
+    <li class="list-group-item" style="margin: 10px; padding: 10px; border-radius: 10px; box-shadow: 1px 2px lightgrey; text-align: left;">
+      <% review.rating.to_i.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <p><%= review.comment %></p>
     </li>
   <% end %>
   <% else %>
