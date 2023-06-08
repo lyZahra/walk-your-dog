@@ -5,7 +5,6 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-    marker: String
   }
 
   connect() {
@@ -15,12 +14,11 @@ export default class extends Controller {
       // style: "mapbox://styles/mapbox/streets-v10"
       // style: "mapbox://styles/crg1234/climxtrcl00n301r08sfb3jk1" globe version
       style: "mapbox://styles/crg1234/clin81q2h001p01p79a25bqi4",
-      center: [51.5072, 0.1276],
+      // center: [51.5072, 0.1276], London
       zoom: 9
     })
 
-    this.#addMarkersToShowMap()
-    this.#addMarketToMap
+    this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
 
@@ -37,16 +35,6 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
-
-  #addMarkerToShowMap(marker) {
-    const customMarker = document.createElement("div")
-    customMarker.innerHTML = marker.marker_html
-
-    new mapboxgl.Marker(customMarker)
-      .setLngLat([marker.lng, marker.lat])
-      .addTo(this.map)
-  }
-
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()

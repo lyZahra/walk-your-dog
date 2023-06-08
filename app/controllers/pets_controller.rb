@@ -10,8 +10,8 @@ class PetsController < ApplicationController
       {
         lat: pet.latitude,
         lng: pet.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {pet: pet}),
-        marker_html: render_to_string(partial: "marker", locals: {pet: pet})
+        info_window_html: render_to_string(partial: "info_window", locals: { pet: pet }),
+        marker_html: render_to_string(partial: "marker", locals: { pet: pet })
       }
     end
     skip_authorization
@@ -26,16 +26,6 @@ class PetsController < ApplicationController
     authorize @pet
     @review = Review.new
     @other_pets = Pet.all.reject { |pet| pet.id == @pet.id }
-
-    @marker = @pet.geocode do |pet|
-      {
-        lat: pet.latitude,
-        lng: pet.longitude,
-        # info_window_html: render_to_string(partial: "info_window", locals: {pet: pet}),
-        marker_html: render_to_string(partial: "marker")
-      }
-    end
-
     skip_authorization
   end
 
