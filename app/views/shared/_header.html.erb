@@ -2,7 +2,18 @@
 
   <nav class="navbar navbar-light bg-light justify-content-between">
 
-    <div class="d-flex">
+      <div>
+        <a class="navbar-brand form-inline" href="/">
+        <%= image_tag "walkyourdog.png", class: "navbar-img d-inline-block align-top" %>
+        Walk Your Dog 🐾
+        </a>
+      </div>
+
+      <%# UNCOMMENT TO ADD SEARCH FIELD TO NAVBAR %>
+       <%# <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
+      </form> %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,18 +53,6 @@
           <% end %>
         </ul>
       </div>
-
-      <a class="navbar-brand form-inline" href="/">
-      <%= image_tag "walkyourdog.png", class: "navbar-img d-inline-block align-top" %>
-      Walk Your Dog 🐾
-      </a>
-
-    </div>
-
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
-      </form>
 
   </nav>
 
