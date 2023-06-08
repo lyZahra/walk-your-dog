@@ -1,4 +1,5 @@
 require "open-uri"
+require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -19,8 +20,33 @@ chris = User.create!(email: "guywholovesdogs@gmail.com", password: "secret", nam
 safia = User.create!(email: "example@gmail.com", password: "secret", name: "Safia")
 nurra = User.create!(email: "example.example@gmail.com", password: "secret", name: "Nurra")
 
+num_dummy_users = 10 # Specify the number of dummy users
+users = []
+num_dummy_users.times do
+  users << User.create!(
+    email: Faker::Internet.unique.email,
+    password: 'secret',
+    name: Faker::Name.name
+  )
+end
+num_dummy_pets = 50
+num_dummy_pets.times do
+  luna_file = URI.open("https://source.unsplash.com/random/?dog")
+  luna = Pet.new(
+    name: Faker::Creature::Dog.name,
+    availability: false,
+    breed: Faker::Creature::Dog.breed,
+    address: Faker::Address.city,
+    description: Faker::Lorem.paragraph,
+    user: users.sample
+  )
+  luna.photo.attach(io: luna_file, filename: "luna.png", content_type: "image/png")
+  luna.save
+end
+
 bella_file = URI.open("https://source.unsplash.com/random/?dog")
-bella = Pet.new(name: "Bella", availability: true, breed: "poodle", description: "From cuddles on the couch to infinite (sometimes slobbery) kisses and more, there is something extra special about a dog’s love. No matter what, our dogs are always there for us. Who else will wait by the door and await our arrival as they wag their tails gleefully?From cuddles on the couch to infinite (sometimes slobbery) kisses and more, there is something extra special about a Bella love. No matter what, our dog is always there for us. Who else will wait by the door and await our arrival as she wags her tail gleefully?")
+
+bella = Pet.new(name: "Bella", availability: true, breed: "poodle", description: "cuddling and love chicken", address: "New York")
 bella.user = juliette
 bella.photo.attach(io: bella_file, filename: "bella.png", content_type: "image/png")
 bella.save
@@ -50,6 +76,15 @@ daisy.photo.attach(io: daisy_file, filename: "daisy.png", content_type: "image/p
 daisy.save
 
 # Seed for bookings
+pets = Pet.all
+num_booking = 20
+num_booking.times do
+  booking = Booking.new(start_date: Faker::Date.between(from: '2023-10-23', to: '2024-09-25'), end_date: Faker::Date.between(from: '2023-10-23', to: '2024-09-25'), booking_date: Faker::Date.between(from: '2023-10-23', to: '2024-09-25'), status: "pending")
+  booking.user = users.sample
+  booking.pet = pets.sample
+  booking.save
+end
+
 a = Booking.new(start_date: "2023-08-01", end_date: "2023-08-05", booking_date: "2023-06-20", status: "pending")
 a.pet = bella
 a.user = tom
@@ -76,29 +111,45 @@ e.user = nurra
 e.save
 
 # create reviews
+
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
+<<<<<<< HEAD
 # review_a.pet = a.pet
+=======
+>>>>>>> master
 review_a.save!
 
 review_b = Review.new(comment: "Max is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_b.booking = b
+<<<<<<< HEAD
 # review_b.pet = b.pet
+=======
+>>>>>>> master
 review_b.save!
 
 review_c = Review.new(comment: "Luna is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_c.booking = c
+<<<<<<< HEAD
 # review_c.pet = c.pet
+=======
+>>>>>>> master
 review_c.save!
 
 review_d = Review.new(comment: "Cooper is a very good dog, he is very kind and he loves to play with other dogs", rating: 5)
 review_d.booking = d
+<<<<<<< HEAD
 # review_d.pet = d.pet
+=======
+>>>>>>> master
 review_d.save!
 
 review_e = Review.new(comment: "Daisy is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_e.booking = e
+<<<<<<< HEAD
 # review_e.pet = e.pet
+=======
+>>>>>>> master
 review_e.save!
 
 puts "Finished!"
