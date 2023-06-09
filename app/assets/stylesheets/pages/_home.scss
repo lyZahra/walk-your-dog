@@ -8,16 +8,27 @@ body {
   display: grid;
   margin-top: 18px;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 8px;
+  grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  width: 70%;
 }
 
 .pet-card {
   background-color: white;
   width: 20rem;
-  border-radius: 5px;
+  height: 300px;
+  border-radius: 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   font-size: small;
+}
+
+.image-div {
+  height: 65%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .card {
@@ -42,12 +53,17 @@ body {
   width: 100%;
 }
 
-@media(max-width: 900px) {
-  .pet-card {
-    margin-bottom: 15px;
-  }
+.info {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
 
 .form-control {
   background-color: #F7F1E3;
 }
+
