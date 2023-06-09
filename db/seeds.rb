@@ -29,7 +29,7 @@ num_dummy_users.times do
     name: Faker::Name.name
   )
 end
-num_dummy_pets = 50
+num_dummy_pets = 30
 num_dummy_pets.times do
   luna_file = URI.open("https://source.unsplash.com/random/?dog")
   luna = Pet.new(
