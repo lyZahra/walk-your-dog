@@ -32,7 +32,15 @@
   height: 100vh;
   position: sticky;
   top: 0;
-  width: 40%;
+  width: 45%;
+}
+
+.h2-map {
+  text-decoration: none;
+}
+
+.p-map {
+  text-decoration: none;
 }
 
 .card-product {
@@ -46,9 +54,14 @@
   padding: 10px;
 }
 
+.card-product:hover {
+  background-color: #FFDA79;
+  opacity: 0.9;
+}
+
 .card-product img {
   height: 80%;
-  width: 50px;
+  width: 75px;
   object-fit: cover;
 }
 
@@ -70,18 +83,7 @@
   padding: 16px;
 }
 
-#my-div {
-  background-color: #f00;
-  width: 200px;
-  height: 200px;
-}
 
-a.fill-div {
-  display: block;
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-}
 
 
 

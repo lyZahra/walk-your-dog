@@ -8,10 +8,11 @@ require 'faker'
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning up database..."
+Review.destroy_all
 Pet.destroy_all
 User.destroy_all
 Booking.destroy_all
-Review.destroy_all
+
 puts "Database cleaned"
 
 juliette = User.create!(email: "walkyourdog.user@gmail.com", password: "secret", name: "Juliette")
@@ -29,7 +30,11 @@ num_dummy_users.times do
     name: Faker::Name.name
   )
 end
+<<<<<<< HEAD
 num_dummy_pets = 30
+=======
+num_dummy_pets = 200
+>>>>>>> master
 num_dummy_pets.times do
   luna_file = URI.open("https://source.unsplash.com/random/?dog")
   luna = Pet.new(
@@ -111,6 +116,16 @@ e.user = nurra
 e.save
 
 # create reviews
+num_reviews = 20
+num_reviews.times do
+  # Generate fake review data using Faker
+  review = Review.new(
+    comment: Faker::Lorem.paragraph,
+    rating: rand(1..5),
+    booking: Booking.all.sample
+  )
+  review.save!
+end
 
 review_a = Review.new(comment: "Bella is a very good dog, she is very kind and she loves to play with other dogs", rating: 5)
 review_a.booking = a
