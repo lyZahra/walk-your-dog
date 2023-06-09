@@ -1,9 +1,15 @@
 <%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> %>
+<div class="banner" style="background-image: url('/app/assets/images/banner.png');">
+    <div class="container">
+      <h1>Meet your fluffy neighboor!</h1>
+      <p>Share your dogs' love.</p>
+    </div>
+</div>
 
-<div class="container">
+<body>
   <div class="wrapper">
-   <% @pets.each do |pet| %>
+    <% @pets.each do |pet| %>
     <div class="col-sm">
       <div class="pet-card">
         <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
@@ -15,10 +21,10 @@
           <% end %>
           </div>
         <div>
-          <h2><%= link_to pet.name,  pet_path(pet) %></h2>
+          <h3><%= link_to pet.name,  pet_path(pet) %></h3>
         </div>
         <div>
-          <h3><%= pet.breed %></h3>
+          <p><%= pet.breed %></p>
         </div>
         <div class="media">
           <label>Average rating:</label><br>
@@ -29,10 +35,10 @@
           <% end %>
       </div>
         <div style="white-space: nowrap; width: 17rem; overflow: hidden; text-overflow: ellipsis;">
-         <%= link_to pet.description,  pet_path(pet)  %>
+          <%= link_to pet.description,  pet_path(pet)  %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
-</div>
+</body>

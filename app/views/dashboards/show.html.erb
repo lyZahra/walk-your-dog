@@ -1,7 +1,7 @@
-
-<div class="bg-white px-4 py-4 border-bottom">
-  <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
-</div>
+<body>
+  <div class="bg-white px-4 py-4 border-bottom">
+    <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
+  </div>
 
 <div class="bg-white px-4 py-4 border-botom">
   <nav class="pt-6 pl-4 pr-4">
@@ -14,31 +14,36 @@
 
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="container mt-4 mb-4">
-        <h3> How are ? </h3>
+        <div class="cards">
         <% if @pets.empty? %>
           <p>You have no pets yet</p>
           <p>Become a Dog's mum or dad</p>
         <% else %>
+        <div class="d-flex pt-2">
           <% @pets.each do |pet| %>
-            <div class="inline-items">
-                <%= cl_image_tag pet.photo.key, crop: :fill, class: "thumbnail pb-2" %>
-                <%= pet.name %>
-            </div>
+            <div class="card-product ml-4" id="map-clickable-card">
+                <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
+              <div class="card-product-infos">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %> </p>
+              </div>
+          </div>
           <% end %>
+        </div>
         <% end %>
       </div>
     </div>
 
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <div class="mt-4 mb-4">
-        <h3>Requests about your dogs</h3>
+      <div class="mt-4 mb-4 bg-white">
+        <h3>Requests about my dogs</h3>
         <% if @bookings_for_my_dogs.empty? %>
           <p>You have no pets yet</p>
           <p>Become a Dog's mum or dad</p>
 
           <% else %>
-          <table class="table mb-2 mt-2 table-hover">
+
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Dogs</th>
@@ -46,6 +51,7 @@
                 <th scope="col">From</th>
                 <th scope="col">Walker's infos</th>
                 <th scope="col">Request's status</th>
+                <th scope="col">Confirmation</th>
               </tr>
             </thead>
 
@@ -54,19 +60,20 @@
                 <tr>
                   <td><%= booking.pet.name %></td>
                   <td><%= booking.booking_date %></td>
-                  <td><%= booking.user.name%></td>
+                  <td><%= booking.user.name.capitalize%></td>
                   <td><%= booking.user.email%></td>
                   <td>
                     <%= simple_form_for(booking) do |f| %>
-                    <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"] %>
+                    <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"], input_html: {class: "btn-light btn-sm"} %>
+                  </td>
+                  <td>
                     <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
                     <% end %>
                   </td>
                 </tr>
               <% end %>
-
-          <% end %>
             </tbody>
+          <% end %>
           </table>
       </div>
     </div>
@@ -75,37 +82,45 @@
       <div class="col mt-4 mb-4">
         <h3>Your requests to book other dogs</h3>
 
-          <ol class="list-group list-group-flush">
-            <% @bookings.each do |booking| %>
-              <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="fw-light"> The Dog you want to meet : <%= booking.pet.name %> - Date of booking : <%= booking.booking_date %></div>
-                  <div class="d-flex">
-                    <% if booking.status == "pending"%>
-                    <span class="position p-2 bg-warning border border-light rounded-circle">
-                      <span class="visually-hidden">Status</span>
-                    </span>
-                    <p>Status: <%= booking.status.capitalize %></p>
-                    <% elsif booking.status == "accepted" %>
-                    <span class="position-absolute p-2 bg-success border border-light rounded-circle">
-                      <span class="visually-hidden">Status</span>
-                    </span>
-                    <% elsif booking.status == "denied" %>
-                    <span class="position-absolute p-2 bg-warning border border-light rounded-circle">
-                      <span class="visually-hidden">Status</span>
-                    </span>
-                    <% else booking.status == "completed" %>
-                    <span class="position-absolute p-2 bg-secondary border border-light rounded-circle">
-                      <span class="visually-hidden">Status</span>
-                    </span>
-                    <% end %>
-                  </div>
-              </li>
-            <% end %>
-          </ol>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Dogs</th>
+                <th scope="col">Date</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Owner's infos</th>
+                <th scope="col">Request's status</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @bookings.each do |booking| %>
+                <tr>
+                  <td><%= booking.pet.name %></td>
+                  <td><%= booking.booking_date %></td>
+                  <td><%= booking.pet.user.name.capitalize%></td>
+                  <td><%= booking.user.email%></td>
+                  <td><%= booking.status.capitalize%></td>
+                  <td>
+                  <% if booking.status == "pending"%>
+                    <i class="fa-solid fa-paw" style="color: #ffb142;"></i>
+                  <% elsif booking.status == "accepted" %>
+                    <i class="fa-solid fa-dog-leashed" style="color: #47cc00;"></i>
+                  <% elsif booking.status == "denied" %>
+                    <i class="fa-regular fa-bone-break" style="color: #bd0000;"></i>
+                  <% else booking.status == "completed" %>
+                    <i class="fa-solid fa-check" style="color: #666666;"></i>
+                  <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
       </div>
     </div>
   </div>
 </div>
+</body>
 
 
 <%# class="btn btn-warning btn-sm text-dark rounded-pill"></span> %>
