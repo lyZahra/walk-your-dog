@@ -1,4 +1,4 @@
-
+<body>
   <div class="bg-white px-4 py-4 border-bottom">
     <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
   </div>
@@ -14,21 +14,20 @@
 
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="container mt-4 mb-4">
-        <h3> How are ? </h3>
+        <div class="cards">
         <% if @pets.empty? %>
           <p>You have no pets yet</p>
           <p>Become a Dog's mum or dad</p>
         <% else %>
         <div class="d-flex pt-2">
           <% @pets.each do |pet| %>
-            <div class="col-sm">
-              <div class="pet-card">
-                <div><%= cl_image_tag pet.photo.key, height: 300 , width: 320 , crop: :fill %></div>
-                <div><h2><%= link_to pet.name,  pet_path(pet) %></h2></div>
-                <div><h3><%= pet.breed %></h3></div>
+            <div class="card-product ml-4" id="map-clickable-card">
+                <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
+              <div class="card-product-infos">
+                <h2><%= pet.name %></h2>
+                <p><%= pet.breed %> </p>
               </div>
-            </div>
+          </div>
           <% end %>
         </div>
         <% end %>
@@ -36,7 +35,7 @@
     </div>
 
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <div class="mt-4 mb-4">
+      <div class="mt-4 mb-4 bg-white">
         <h3>Requests about my dogs</h3>
         <% if @bookings_for_my_dogs.empty? %>
           <p>You have no pets yet</p>
@@ -44,47 +43,46 @@
 
           <% else %>
 
-          <div class="table-responsive">
-            <table class="table table_customized">
-              <thead>
-                <tr>
-                  <th scope="col">Dogs</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">From</th>
-                  <th scope="col">Walker's infos</th>
-                  <th scope="col">Request's status</th>
-                  <th scope="col">Confirmation</th>
-                </tr>
-              </thead>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Dogs</th>
+                <th scope="col">Date</th>
+                <th scope="col">From</th>
+                <th scope="col">Walker's infos</th>
+                <th scope="col">Request's status</th>
+                <th scope="col">Confirmation</th>
+              </tr>
+            </thead>
 
-              <tbody>
-                <% @bookings_for_my_dogs.each do |booking| %>
-                  <tr>
-                    <td><%= booking.pet.name %></td>
-                    <td><%= booking.booking_date %></td>
-                    <td><%= booking.user.name.capitalize%></td>
-                    <td><%= booking.user.email%></td>
-                    <td>
-                      <%= simple_form_for(booking) do |f| %>
-                      <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"], input_html: {class: "btn-light btn-sm"} %>
-                    </td>
-                    <td>
-                      <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
-                      <% end %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            <% end %>
-            </table>
-        </div>
+            <tbody>
+              <% @bookings_for_my_dogs.each do |booking| %>
+                <tr>
+                  <td><%= booking.pet.name %></td>
+                  <td><%= booking.booking_date %></td>
+                  <td><%= booking.user.name.capitalize%></td>
+                  <td><%= booking.user.email%></td>
+                  <td>
+                    <%= simple_form_for(booking) do |f| %>
+                    <% f.input :status, collection: ["pending", "accepted", "denied", "completed"], input_html: {class: "btn-light btn-sm"} %>
+                  </td>
+                  <td>
+                    <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          <% end %>
+          </table>
       </div>
     </div>
 
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <div class="col mt-4 mb-4">
         <h3>Your requests to book other dogs</h3>
-          <table class="table mb-2 mt-2 table-hover align-middle">
+
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Dogs</th>
@@ -122,6 +120,7 @@
     </div>
   </div>
 </div>
+</body>
 
 
 <%# class="btn btn-warning btn-sm text-dark rounded-pill"></span> %>
