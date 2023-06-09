@@ -31,13 +31,15 @@ num_dummy_users.times do
   )
 end
 num_dummy_pets = 200
+addresses = ["London", "Barcelona", "Paris", "Oslo", "Roma", "Kyiv", "Athen", "Amsterdam", "Warszawa", "Helsingfors", "Valletta", "Stockholm", "Zagreb", "Praha", "Budapest", "Nikosia", "København", "Sofia", "Minsk", "Riga", "Douglas", "Vilnius", "Dublin", "Sarajevo", "Brussel", "Valletta", "Geneva", "Hungary", "stockholm", "Bucharest"]
 num_dummy_pets.times do
   luna_file = URI.open("https://source.unsplash.com/random/?dog")
   luna = Pet.new(
     name: Faker::Creature::Dog.name,
     availability: false,
     breed: Faker::Creature::Dog.breed,
-    address: Faker::Address.city,
+  #address: Faker::Address.city,
+    address: addresses.sample,
     description: Faker::Lorem.paragraph,
     user: users.sample
   )
