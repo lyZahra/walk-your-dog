@@ -1,125 +1,127 @@
 <body>
-  <div class="bg-white px-4 py-4 border-bottom">
-    <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
-  </div>
-
-<div class="bg-white px-4 py-4 border-botom">
-  <nav class="pt-6 pl-4 pr-4">
-    <div class="nav nav-tabs tabs" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">My Dogs</button>
-      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Requests About My Dogs</button>
-      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Others Dogs' Bookings</button>
+    <div class="bg-white px-4 py-4 border-bottom">
+      <h1 class="pt-4 pb-4 pl-4">Hi, <%= @user.name.capitalize %> </h1>
     </div>
-  </nav>
 
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <div class="cards">
-        <% if @pets.empty? %>
-          <p>You have no pets yet</p>
-          <p>Become a Dog's mum or dad</p>
-        <% else %>
-        <div class="d-flex pt-2">
-          <% @pets.each do |pet| %>
-            <div class="card-product ml-4" id="map-clickable-card">
-                <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
-              <div class="card-product-infos">
-                <h2><%= pet.name %></h2>
-                <p><%= pet.breed %> </p>
-              </div>
+    <div class="bg-white px-4 py-4 border-botom">
+      <nav class="pt-6 pl-4 pr-4">
+        <div class="nav nav-tabs tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">My Dogs</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Requests About My Dogs</button>
+          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Others Dogs' Bookings</button>
+        </div>
+      </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="cards">
+          <% if @pets.empty? %>
+            <p>You have no pets yet</p>
+            <p>Become a Dog's mum or dad</p>
+          <% else %>
+          <div class="d-flex pt-2">
+            <% @pets.each do |pet| %>
+              <div class="card-product ml-4" id="map-clickable-card">
+                  <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %>
+                <div class="card-product-infos">
+                  <h2><%= pet.name %></h2>
+                  <p><%= pet.breed %> </p>
+                </div>
+            </div>
+            <% end %>
           </div>
           <% end %>
         </div>
-        <% end %>
       </div>
-    </div>
 
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <div class="mt-4 mb-4 bg-white">
-        <h3>Requests about my dogs</h3>
-        <% if @bookings_for_my_dogs.empty? %>
-          <p>You have no pets yet</p>
-          <p>Become a Dog's mum or dad</p>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="mt-4 mb-4 bg-white">
+          <h3>Requests about my dogs</h3>
+          <% if @bookings_for_my_dogs.empty? %>
+            <p>You have no pets yet</p>
+            <p>Become a Dog's mum or dad</p>
 
-          <% else %>
+            <% else %>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Dogs</th>
-                <th scope="col">Date</th>
-                <th scope="col">From</th>
-                <th scope="col">Walker's infos</th>
-                <th scope="col">Request's status</th>
-                <th scope="col">Confirmation</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @bookings_for_my_dogs.each do |booking| %>
+            <table class="table">
+              <thead>
                 <tr>
-                  <td><%= booking.pet.name %></td>
-                  <td><%= booking.booking_date %></td>
-                  <td><%= booking.user.name.capitalize%></td>
-                  <td><%= booking.user.email%></td>
-                  <td>
-                    <%= simple_form_for(booking) do |f| %>
-                    <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"], input_html: {class: "btn-light btn-sm"} %>
-                  </td>
-                  <td>
-                    <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
-                    <% end %>
-                  </td>
+                  <th scope="col">Dogs</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">From</th>
+                  <th scope="col">Walker's infos</th>
+                  <th scope="col">Request's status</th>
+                  <th scope="col">Confirmation</th>
                 </tr>
-              <% end %>
-            </tbody>
+              </thead>
+
+              <tbody>
+                <% @bookings_for_my_dogs.each do |booking| %>
+                  <tr>
+                    <td><%= booking.pet.name %></td>
+                    <td><%= booking.booking_date %></td>
+                    <td><%= booking.user.name.capitalize%></td>
+                    <td><%= booking.user.email%></td>
+                    <td>
+                      <%= simple_form_for(booking) do |f| %>
+                      <%= f.input :status, collection: ["pending", "accepted", "denied", "completed"], input_html: {class: "btn-light btn-sm"} %>
+                    </td>
+                    <td>
+                      <%= f.submit class: "btn btn-dark btn-sm rounded-pill" %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+
           <% end %>
-          </table>
+            </table>
+        </div>
       </div>
-    </div>
 
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-      <div class="col mt-4 mb-4">
-        <h3>Your requests to book other dogs</h3>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="col mt-4 mb-4">
+          <h3>Your requests to book other dogs</h3>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Dogs</th>
-                <th scope="col">Date</th>
-                <th scope="col">Owner</th>
-                <th scope="col">Owner's infos</th>
-                <th scope="col">Request's status</th>
-                <th scope="col">#</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @bookings.each do |booking| %>
+            <table class="table">
+              <thead>
                 <tr>
-                  <td><%= booking.pet.name %></td>
-                  <td><%= booking.booking_date %></td>
-                  <td><%= booking.pet.user.name.capitalize%></td>
-                  <td><%= booking.user.email%></td>
-                  <td><%= booking.status.capitalize%></td>
-                  <td>
-                  <% if booking.status == "pending"%>
-                    <i class="fa-solid fa-paw" style="color: #ffb142;"></i>
-                  <% elsif booking.status == "accepted" %>
-                    <i class="fa-solid fa-dog-leashed" style="color: #47cc00;"></i>
-                  <% elsif booking.status == "denied" %>
-                    <i class="fa-regular fa-bone-break" style="color: #bd0000;"></i>
-                  <% else booking.status == "completed" %>
-                    <i class="fa-solid fa-check" style="color: #666666;"></i>
-                  <% end %>
-                  </td>
+                  <th scope="col">Dogs</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Owner's infos</th>
+                  <th scope="col">Request's status</th>
+                  <th scope="col">#</th>
                 </tr>
-              <% end %>
-            </tbody>
+              </thead>
+
+              <tbody>
+                <% @bookings.each do |booking| %>
+                  <tr>
+                    <td><%= booking.pet.name %></td>
+                    <td><%= booking.booking_date %></td>
+                    <td><%= booking.pet.user.name.capitalize%></td>
+                    <td><%= booking.user.email%></td>
+                    <td><%= booking.status.capitalize%></td>
+                    <td>
+                    <% if booking.status == "pending"%>
+                      <i class="fa-solid fa-paw" style="color: #ffb142;"></i>
+                    <% elsif booking.status == "accepted" %>
+                      <i class="fa-solid fa-dog-leashed" style="color: #47cc00;"></i>
+                    <% elsif booking.status == "denied" %>
+                      <i class="fa-regular fa-bone-break" style="color: #bd0000;"></i>
+                    <% else booking.status == "completed" %>
+                      <i class="fa-solid fa-check" style="color: #666666;"></i>
+                    <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
 
 
