@@ -6,3 +6,12 @@
   color: #FFB142;
   background-color: #F7F1E3;
 }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: #F7F1E3;
+}
+
+.table> :not(caption)>*>* {
+  background-color: #F7F1E3;
+}
