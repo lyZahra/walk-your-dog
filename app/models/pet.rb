@@ -11,7 +11,7 @@ class Pet < ApplicationRecord
   def average_rating
     if reviews.present?
       average = reviews.map(&:rating).sum / reviews.count
-      return "#{average.round(1)} stars"
+      # return "#{average.round(1)} stars"
     else
       "No reviews yet"
     end
