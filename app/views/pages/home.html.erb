@@ -12,7 +12,8 @@
     <div class="col-sm">
       <div class="pet-card">
         <%# <img class="card-img-" src="https://pupuphooray.com/wp-content/uploads/2019/03/dog-icon.png" alt="cute dog"> %>
-        <div class="image-div" style="background-image: url('<%= cl_image_path pet.photo.key %>')">
+        <%# <div class="image-div" style="background-image: url('<%= cl_image_path pet.photo.key %>')"> %>
+        <div class="image-div" style="background-image: url('<%= cl_image_path(pet.photo.key) if pet.photo&.key.present? %>')">
           <%# <% if pet.photo.key.present? %>
           <%# <%= cl_image_tag pet.photo.key, height: 300 , width: 320 , crop: :fill %>
           <%# <% else  %>

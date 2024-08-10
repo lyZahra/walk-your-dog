@@ -8,7 +8,6 @@ class DashboardsController < ApplicationController
     authorize @bookings
     authorize @pets
   end
-
 end
 
   #simple form </ booking parameter > call the update through booking controller > use FE display with IF statement
