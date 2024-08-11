@@ -25,7 +25,7 @@
       <div class="d-flex pt-2">
         <% @pets.each do |pet| %>
           <div class="card-product ml-4" id="map-clickable-card">
-              <%# <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %> %>
+              <%# <%= cl_image_tag pet.photo.key, crop: :fill, style: "border-radius: 10px;", class: "show-image" %> 
               <%= cl_image_tag(pet.photo&.key || 'default_image.png', crop: :fill, style: "border-radius: 10px;", class: "show-image") %>
             <div class="card-product-infos">
               <h2><%= pet.name %></h2>

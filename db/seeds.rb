@@ -47,7 +47,7 @@ num_dummy_pets.times do
   luna.save
 end
 
-bella_file = URI.open("https://source.unsplash.com/random/?dog")
+bella_file = URI.open("https://unsplash.com/photos/a-dog-sitting-on-the-ground-with-its-mouth-open-iP1ngIEbJh0")
 
 bella = Pet.new(name: "Bella", availability: true, breed: "poodle", description: "cuddling and love chicken", address: "Hamburg")
 bella.user = juliette
